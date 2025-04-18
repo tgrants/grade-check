@@ -8,6 +8,7 @@ without giving direct access to it.
 - `python -m venv venv`
 - `source venv/bin/activate`
 - `pip install -r requirements.txt`
+- `python manage.py createsuperuser`
 - `python manage.py runserver`
 
 ## Contributing
@@ -17,4 +18,4 @@ For more information see [`CONTRIBUTING.md`](CONTRIBUTING.md).
 
 ## License
 
-This repository is licensed under the MIT License. For more details, see the [LICENSE](LICENSE.md) file.
+This repository is licensed under the MIT License. For more details, see the [`LICENSE`](LICENSE) file.
