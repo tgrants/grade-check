@@ -6,3 +6,12 @@ venv/
 
 # Database
 *.sqlite3
+
+# API keys
+credentials.json
+
+# Enviromnent variables
+.env
+
+# Static files
+staticfiles/

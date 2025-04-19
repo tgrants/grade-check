@@ -5,11 +5,22 @@ without giving direct access to it.
 
 ## Setup
 
+### Development
+
 - `python -m venv venv`
 - `source venv/bin/activate`
 - `pip install -r requirements.txt`
 - `python manage.py createsuperuser`
+- `python manage.py collectstatic`
 - `python manage.py runserver`
+
+### Production
+
+- Download and place your `credentials.json` in this directory
+- Set environment variables
+	- Copy template `cp .env.example .env`
+	- Edit it `nano .env`
+- Build and start container `docker-compose up --build`
 
 ## Contributing
 
@@ -18,4 +29,5 @@ For more information see [`CONTRIBUTING.md`](CONTRIBUTING.md).
 
 ## License
 
-This repository is licensed under the MIT License. For more details, see the [`LICENSE`](LICENSE) file.
+This project is licensed under the terms of the [MIT license](https://en.wikipedia.org/wiki/MIT_License).
+See the [LICENSE](LICENSE) file for more information.

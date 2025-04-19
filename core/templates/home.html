@@ -2,10 +2,35 @@
 
 {% block content %}
 <div class="container mt-5">
+	{% if request.user.is_authenticated and request.user.is_staff %}
+		<a href="{% url 'admin:index' %}" class="admin-btn">Go to Admin Panel</a>
+	{% endif %}
 	<div class="card">
 		<div class="card-body">
-			<h5 class="card-title">Welcome</h5>
-			<p class="card-text">Your scores</p>
+			<h5 class="card-title">Welcome, {{ request.user.username }}</h5>
+			<p class="card-text">Your scores:</p>
+			{% if scores %}
+				<table class="table table-striped mt-3">
+					<thead>
+						<tr>
+							<th>Name</th>
+							<th>Score</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for subject, score in scores.items %}
+							<tr>
+								<td>{{ subject }}</td>
+								<td>{{ score }}</td>
+							</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+			{% elif error %}
+				<div class="alert alert-warning mt-3">{{ error }}</div>
+			{% else %}
+				<p class="text-muted">No scores available yet.</p>
+			{% endif %}
 		</div>
 	</div>
 </div>
