@@ -9,13 +9,13 @@ from googleapiclient.discovery import build
 
 SPREADSHEET_ID = config('SPREADSHEET_ID')
 SHEET_NAME = config('SHEET_NAME')
-RANGE_NAME = f"{SHEET_NAME}!A1:Z"
+RANGE_NAME = SHEET_NAME
 
 SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly']
 SERVICE_ACCOUNT_FILE = os.path.join(os.path.dirname(__file__), '..', 'credentials.json')
 
 CACHE_KEY = 'google_sheet_data'
-CACHE_TIMEOUT = config('CACHE_TIMEOUT')
+CACHE_TIMEOUT = float(config('CACHE_TIMEOUT'))
 
 
 def get_sheet_service():
@@ -28,6 +28,10 @@ def get_sheet_service():
 
 
 def fetch_sheet_data():
+	cached_data = cache.get(CACHE_KEY)
+	if cached_data:
+		return cached_data
+
 	sheet = get_sheet_service()
 	result = sheet.values().get(
 		spreadsheetId=SPREADSHEET_ID,
@@ -39,13 +43,8 @@ def fetch_sheet_data():
 
 
 def get_student_scores(username):
-	sheet = get_sheet_service()
-	result = sheet.values().get(
-		spreadsheetId=SPREADSHEET_ID,
-		range=RANGE_NAME
-	).execute()
+	values = fetch_sheet_data()
 
-	values = result.get('values', [])
 	if not values or len(values) < 2:
 		return None
 
