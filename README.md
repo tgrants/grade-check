@@ -1,6 +1,16 @@
 # GradeCheck
 
-This app allows educators to share scores from a google spreadsheet, without giving students direct access to it.
+This app allows educators to share scores from a Google spreadsheet without giving students direct access to it.
+
+## Features
+
+<!-- Commented features are planned-->
+<!--
+- Groups and permissions - mutiple sheets, educators and classes can be added.
+- Multi-language support - currently supports English and Latvian. Administrators can set the default and which languages can be used. If enabled, users can set their preffered language.
+- Accessibility - 100% accessibility score on [Google Lighthouse](https://developer.chrome.com/docs/lighthouse/overview). Tested with a screen reader.
+- Maintainability - easy to update to a newer version.
+-->
 
 ## Setup
 
@@ -13,8 +23,9 @@ For more detailed instructions, see the [documentation](docs/).
 	- Create a project in [Google Cloud console](https://console.cloud.google.com)
 		- Enable Google Sheets API
 		- Create a service account
+		- Download and place your `credentials.json` in this directory
 	- Create your sheet (see [docs/sheet-format.md](docs/sheet-format.md))
-	- Download and place your `credentials.json` in this directory
+		- Share it with the service account
 - Clone this repository `git clone https://github.com/tgrants/grade-check.git`
 - Set environment variables
 	- Copy template `cp .env.example .env`
@@ -43,6 +54,10 @@ For more detailed instructions, see the [documentation](docs/).
 - Open container shell `docker exec -it <web container> sh`
 	- Apply migrations `python manage.py migrate`
 	- Create super user `python manage.py createsuperuser`
+
+## Updating
+
+Migrating your data to a new version is currently not supported, but will be in the future.
 
 ## Contributing
 
