@@ -4,9 +4,8 @@ The project's team and community take security issues.
 
 We appreciate your efforts to disclose your findings responsibly and will make every effort to acknowledge your contributions.
 
-To report a security issue, go to the project's issues and create one using the appropriate template.
+If you find a security vulnerability, please report it using Github's [private vulnerability reporting feature](https://docs.github.com/en/code-security/security-advisories/guidance-on-reporting-and-writing-information-about-vulnerabilities/privately-reporting-a-security-vulnerability).
 
-If your report could leak data or might expose how to gain access to a restricted area or break the system,
-please email [toms.grants@gmail.com](mailto:toms.grants@gmail.com) and include the word "SECURITY" in the subject line.
+Alternatively, contact the maintainers directly.
 
 We'll endeavour to respond quickly and keep you updated throughout the process.
