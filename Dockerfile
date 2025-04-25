@@ -10,6 +10,8 @@ RUN pip install --upgrade pip && pip install -r requirements.txt
 
 COPY . .
 
+RUN chmod +x entrypoint.sh
+
 RUN python manage.py collectstatic --noinput
 
-CMD ["gunicorn", "gradecheck.wsgi:application", "--bind", "0.0.0.0:8000"]
+ENTRYPOINT ["./entrypoint.sh"]

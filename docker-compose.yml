@@ -1,7 +1,6 @@
 services:
   web:
     build: .
-    command: gunicorn gradecheck.wsgi:application --bind 0.0.0.0:8000
     environment:
       - DJANGO_DEBUG=False
     env_file:
@@ -10,8 +9,31 @@ services:
       - static_volume:/app/staticfiles
     expose:
       - "8000"
+    depends_on:
+      postgres:
+        condition: service_healthy
     networks:
       - backend
+    healthcheck:
+      test: ["CMD", "python", "-c", "import socket; s=socket.socket(); s.settimeout(2); s.connect(('localhost', 8000))"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  postgres:
+    image: postgres:17
+    restart: always
+    env_file:
+      - .env
+    volumes:
+      - postgres_volume:/var/lib/postgresql/data/
+    networks:
+      - backend
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
 
   nginx:
     image: nginx:alpine
@@ -21,12 +43,14 @@ services:
       - ./nginx.conf:/etc/nginx/nginx.conf
       - static_volume:/app/staticfiles
     depends_on:
-      - web
+      web:
+        condition: service_healthy
     networks:
       - backend
 
 volumes:
   static_volume:
+  postgres_volume:
 
 networks:
   backend:

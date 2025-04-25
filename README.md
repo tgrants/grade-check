@@ -7,7 +7,7 @@ This app allows educators to share scores from a Google spreadsheet without givi
 <!-- Commented features are planned-->
 <!--
 - Groups and permissions - mutiple sheets, educators and classes can be added.
-- Multi-language support - currently supports English and Latvian. Administrators can set the default and which languages can be used. If enabled, users can set their preffered language.
+- Multi-language support - currently supports English and Latvian. Administrators can set the default and available languages.
 - Accessibility - 100% accessibility score on [Google Lighthouse](https://developer.chrome.com/docs/lighthouse/overview). Tested with a screen reader.
 - Maintainability - easy to update to a newer version.
 -->
@@ -43,7 +43,6 @@ For more detailed instructions, see the [documentation](docs/).
 ### Production (Docker on Debian 12)
 
 - Install requirements
-	- Git `sudo apt install git`
 	- [Docker](https://docs.docker.com/engine/install/debian/)
 		- Get docker compose `sudo apt install docker-compose`
 		- Enable docker `sudo systemctl enable docker`
