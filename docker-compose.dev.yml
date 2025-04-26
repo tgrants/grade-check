@@ -1,0 +1,31 @@
+services:
+  web:
+    build: .
+    environment:
+      - DJANGO_DEBUG=True
+    env_file:
+      - .env
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - postgres
+    networks:
+      - backend
+
+  postgres:
+    image: postgres:17
+    restart: always
+    env_file:
+      - .env
+    volumes:
+      - postgres_volume:/var/lib/postgresql/data/
+    networks:
+      - backend
+
+volumes:
+  postgres_volume:
+
+networks:
+  backend:

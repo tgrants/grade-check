@@ -2,6 +2,10 @@
 
 This app allows educators to share scores from a Google spreadsheet without giving students direct access to it.
 
+> [!WARNING]
+>
+> This project is in the early stages of development. Breaking changes may occur.
+
 ## Features
 
 <!-- Commented features are planned-->
@@ -17,8 +21,6 @@ This app allows educators to share scores from a Google spreadsheet without givi
 Quick setup instructions for Linux.
 For more detailed instructions, see the [documentation](docs/).
 
-### General
-
 - Prepare [Google sheets](https://workspace.google.com/products/sheets/)
 	- Create a project in [Google Cloud console](https://console.cloud.google.com)
 		- Enable Google Sheets API
@@ -31,32 +33,26 @@ For more detailed instructions, see the [documentation](docs/).
 	- Copy template `cp .env.example .env`
 	- Edit it `nano .env`
 		- if `DJANGO_SECRET_KEY` is left empty, it will be generated when the app is run for the first time
-
-### Development
-
-- Create a virtual environment `python -m venv venv`
-- Activate the virtual environment `source venv/bin/activate`
-- Install requirements `pip install -r requirements.txt`
-- Create superuser `python manage.py createsuperuser`
-- Run development server `python manage.py runserver`
-
-### Production (Docker on Debian 12)
-
-- Install requirements
-	- [Docker](https://docs.docker.com/engine/install/debian/)
-		- Get docker compose `sudo apt install docker-compose`
-		- Enable docker `sudo systemctl enable docker`
-		- Start docker `sudo systemctl start docker`
-		- Add user to docker group `sudo usermod -aG docker $USER`
-- Build and start container `docker-compose up --build`
-	- Add `-d` flag to run in background
-- Open container shell `docker exec -it <web container> sh`
-	- Apply migrations `python manage.py migrate`
-	- Create super user `python manage.py createsuperuser`
+- Install [Docker](https://docs.docker.com/engine/install/debian/)
+	- Get docker compose `sudo apt install docker-compose`
+	- Enable docker `sudo systemctl enable docker`
+	- Start docker `sudo systemctl start docker`
+	- Add user to docker group `sudo usermod -aG docker $USER`
+- Build and start container
+	- Development: `docker-compose -f docker-compose.dev.yml up --build`
+	- Production: `docker-compose up --build`
+		- Add `-d` flag to run in background
 
 ## Updating
 
-Migrating your data to a new version is currently not supported, but will be in the future.
+> [!WARNING]
+>
+> Migrating your data to a new version is currently not supported, but will be in the future.
+
+- Read the [changelogs](https://github.com/tgrants/grade-check/releases)
+- Pull the latest changes `git pull`
+- Make sure `.env` has the same values as `.env.example`
+- Rebuild the containers
 
 ## Contributing
 
