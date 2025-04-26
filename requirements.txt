@@ -4,5 +4,6 @@ google-auth
 google-auth-oauthlib
 gunicorn
 psycopg2-binary
+pylint
 python-decouple
 python-dotenv
