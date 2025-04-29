@@ -1,21 +1,19 @@
 import os
-import pickle
-from datetime import datetime, timedelta
+
 from django.core.cache import cache
-from decouple import config
 
 from google.oauth2.service_account import Credentials
 from googleapiclient.discovery import build
 
-SPREADSHEET_ID = config('SPREADSHEET_ID')
-SHEET_NAME = config('SHEET_NAME')
+SPREADSHEET_ID = os.getenv("SPREADSHEET_ID")
+SHEET_NAME = os.getenv("SHEET_NAME")
 RANGE_NAME = SHEET_NAME
 
 SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly']
 SERVICE_ACCOUNT_FILE = os.path.join(os.path.dirname(__file__), '..', 'credentials.json')
 
 CACHE_KEY = 'google_sheet_data'
-CACHE_TIMEOUT = float(config('CACHE_TIMEOUT'))
+CACHE_TIMEOUT = float(os.getenv("CACHE_TIMEOUT"))
 
 
 def get_sheet_service():

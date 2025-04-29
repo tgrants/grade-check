@@ -31,8 +31,7 @@ For more detailed instructions, see the [documentation](docs/).
 - Clone this repository `git clone https://github.com/tgrants/grade-check.git`
 - Set environment variables
 	- Copy template `cp .env.example .env`
-	- Edit it `nano .env`
-		- if `DJANGO_SECRET_KEY` is left empty, it will be generated when the app is run for the first time
+	- Edit it `nano .env` (see the [environment variable documentation](docs/enviornment-variables.md))
 - Install [Docker](https://docs.docker.com/engine/install/debian/)
 	- Get docker compose `sudo apt install docker-compose`
 	- Enable docker `sudo systemctl enable docker`
@@ -44,10 +43,6 @@ For more detailed instructions, see the [documentation](docs/).
 		- Add `-d` flag to run in background
 
 ## Updating
-
-> [!WARNING]
->
-> Migrating your data to a new version is currently not supported, but will be in the future.
 
 - Read the [changelogs](https://github.com/tgrants/grade-check/releases)
 - Pull the latest changes `git pull`

@@ -34,3 +34,5 @@ main
 
 - Create a branch for your changes
 	- `git checkout -b feat/feature-name`
+- [Run linters](docs/linting.md) to ensure your code is formatted properly
+	- `pylint .`
