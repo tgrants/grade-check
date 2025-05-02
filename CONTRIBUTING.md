@@ -6,7 +6,7 @@ Before contributing a new feature, please discuss the change you want to make vi
 
 ## Issues
 
-Before creating a new issue, ensure a similar one has not already been created by searching on GitHub under [Issues](https://github.com/tgrants/grade-check/issues/).
+Before creating a new issue, ensure a similar one has not already been created by searching on GitHub under [Issues](https://github.com/tgrants/gradecheck/issues/).
 
 For reporting vulerabilities, see [SECURITY.md](.github/SECURITY.md).
 

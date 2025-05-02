@@ -8,7 +8,7 @@ Pylint is run:
 - during development with `pylint .` (by the developer)
 - when pushing or creating a pull request (automatically by GitHub actions)
 
-Currently our configuration requires for the score to be at least 7.0/10.0 to pass the test.
+Currently our configuration requires for the score to be at least 8.0/10.0 to pass the test.
 Editing the pylint config or changing the fail treshold is discouraged unless absolutely necessary.
 
 ## Initial setup

@@ -28,7 +28,7 @@ For more detailed instructions, see the [documentation](docs/).
 		- Download and place your `credentials.json` in this directory
 	- Create your sheet (see [docs/sheet-format.md](docs/sheet-format.md))
 		- Share it with the service account
-- Clone this repository `git clone https://github.com/tgrants/grade-check.git`
+- Clone this repository `git clone https://github.com/tgrants/gradecheck.git`
 - Set environment variables
 	- Copy template `cp .env.example .env`
 	- Edit it `nano .env` (see the [environment variable documentation](docs/enviornment-variables.md))
@@ -44,7 +44,7 @@ For more detailed instructions, see the [documentation](docs/).
 
 ## Updating
 
-- Read the [changelogs](https://github.com/tgrants/grade-check/releases)
+- Read the [changelogs](https://github.com/tgrants/gradecheck/releases)
 - Pull the latest changes `git pull`
 - Make sure `.env` has the same values as `.env.example`
 - Rebuild the containers
